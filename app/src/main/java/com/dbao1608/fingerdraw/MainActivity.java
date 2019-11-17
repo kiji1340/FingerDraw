@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         drawFingerView = findViewById(R.id.drawFingerView);
+        drawFingerView.setImageDrawable(getDrawable(R.drawable.image_test));
         findViewById(R.id.photoBtn).setOnClickListener(this);
         findViewById(R.id.clearBtn).setOnClickListener(this);
         findViewById(R.id.undoBtn).setOnClickListener(this);

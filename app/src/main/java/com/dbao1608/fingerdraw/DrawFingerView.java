@@ -2,7 +2,6 @@ package com.dbao1608.fingerdraw;
 
 import android.content.Context;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.support.v7.widget.AppCompatImageView;
@@ -21,12 +20,14 @@ public class DrawFingerView extends AppCompatImageView {
     private int currentColor = -1;
     private OnCoordinateListener listener;
 
+    protected boolean isDrawing() {
+        return currentColor != -1;
+    }
 
     public DrawFingerView(Context context, AttributeSet attrs) {
         super(context, attrs);
         pathList = new ArrayList<>();
         paintList = new ArrayList<>();
-
         init();
     }
 
@@ -36,7 +37,7 @@ public class DrawFingerView extends AppCompatImageView {
 
 
     public void setColor(int color) {
-        this.currentColor = color;
+        this.currentColor = currentColor == color ? -1: color;
     }
 
     private void init() {
@@ -46,6 +47,7 @@ public class DrawFingerView extends AppCompatImageView {
 
         pathList.add(lastestPath);
         paintList.add(lastestPaint);
+
 
     }
 
@@ -67,7 +69,7 @@ public class DrawFingerView extends AppCompatImageView {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        if(currentColor == -1) return false;
+        if(currentColor == -1) return true;
         float x = event.getX();
         float y = event.getY();
         switch (event.getAction()) {
@@ -136,4 +138,5 @@ public class DrawFingerView extends AppCompatImageView {
         }
         postInvalidate();
     }
+
 }

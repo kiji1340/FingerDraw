@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <com.dbao1608.fingerdraw.DrawFingerView
+    <com.dbao1608.fingerdraw.ZoomFingerView
         android:id="@+id/drawFingerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
